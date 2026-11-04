@@ -62,6 +62,15 @@ class usuarioControlador
         res.status(200).json({ exito: true, datos: usuarioActualizado});
             
         }
+    static eliminar(req, res)
+    {
+        const eliminado = UsuarioModelo.eliminar(req.params.id);
+        if (!eliminado) 
+        {
+            return res.status(404).json({ exito: false, mensaje: 'Usuario no encontrado' });
+        }
+        res.status(200).json({ exito: true, mensaje: 'Usuario eliminado correctamente' });
+    }
 }
 
 module.exports = usuarioControlador;

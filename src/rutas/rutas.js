@@ -8,5 +8,5 @@ const UsuarioControlador = require('../controlador/usuarioControlador');
 
  router.post('/', UsuarioControlador.crear);
  router.put('/:id', UsuarioControlador.actualizar);
-
+router.delete('/:id', UsuarioControlador.eliminar);
  module.exports = router;

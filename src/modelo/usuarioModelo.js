@@ -31,6 +31,15 @@ class UsuarioModelo {
         usuario.correo = datos.correo || usuario.correo;
         return usuario;
     }
+
+    static eliminar(id) 
+    {
+        const indice = usuarios.findIndex(u => u.id === parseInt(id));
+        if (indice === -1) return false; //Usuario no encontrado
+        
+        usuarios.splice(indice, 1);
+        return true; //Usuario eliminado correctamente
+    }
 }
 
 module.exports = UsuarioModelo;
