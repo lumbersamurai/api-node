@@ -13,12 +13,23 @@ class UsuarioModelo {
     }
 
     static crear(datos) {
-        const nuevoUsuario = { id: usuarios.length + 1, 
+        const nuevoUsuario = {
+            id: usuarios.length + 1,
             nombre: datos.nombre,
-            email: datos.email 
+            email: datos.email
         };
         usuarios.push(nuevoUsuario);
         return nuevoUsuario;
+    }
+
+    static actualizar(id, datos) {
+        const usuario = this.obtenerUsuarioPorId(id); // Reutilizamos el metodo para obtener el usuario por id
+        if (!usuario) return null;
+
+        // Actualizamos los campos del usuario
+        usuario.nombre = datos.nombre || usuario.nombre;
+        usuario.correo = datos.correo || usuario.correo;
+        return usuario;
     }
 }
 

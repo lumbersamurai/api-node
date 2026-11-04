@@ -49,6 +49,19 @@ class usuarioControlador
             usuario: nuevoUsuario
         });
     }
+
+
+     static actualizar(req, res)
+        
+    {
+        const usuarioActualizado = UsuarioModelo.actualizar(req.params.id, req.body);
+        if (!usuarioActualizado) 
+        {
+            return res.status(404).json({ exito: false, mensaje: 'Usuario no encontrado' });
+        } 
+        res.status(200).json({ exito: true, datos: usuarioActualizado});
+            
+        }
 }
 
 module.exports = usuarioControlador;

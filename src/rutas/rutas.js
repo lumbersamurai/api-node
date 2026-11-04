@@ -7,5 +7,6 @@ const UsuarioControlador = require('../controlador/usuarioControlador');
  router.get('/:id', UsuarioControlador.obtenerUsuarioPorId);
 
  router.post('/', UsuarioControlador.crear);
+ router.put('/:id', UsuarioControlador.actualizar);
 
  module.exports = router;
