@@ -1,10 +1,10 @@
 
-
 const UsuarioModelo = require('../modelo/usuarioModelo');
 
 class usuarioControlador 
 {
 
+    // Coordina el listado y devuelve un sobre de respuesta uniforme.
     static obtenerUsuarios(req, res) 
     {
         return res.status(200).json({
@@ -14,6 +14,7 @@ class usuarioControlador
         });
     }
 
+    // Busca el usuario indicado por URL y responde 404 si no existe.
     static obtenerUsuarioPorId(req, res)
     {
         const id = req.params.id;
@@ -32,6 +33,7 @@ class usuarioControlador
         });
     }
 
+    // Valida los campos minimos antes de delegar la creacion al modelo.
     static crear(req, res)
     {
         const {nombre, correo} = req.body;
@@ -51,7 +53,8 @@ class usuarioControlador
     }
 
 
-     static actualizar(req, res)
+    // Delega la actualizacion y distingue entre exito y usuario inexistente.
+    static actualizar(req, res)
         
     {
         const usuarioActualizado = UsuarioModelo.actualizar(req.params.id, req.body);
@@ -62,6 +65,7 @@ class usuarioControlador
         res.status(200).json({ exito: true, datos: usuarioActualizado});
             
         }
+    // Elimina el usuario solicitado y confirma el resultado de la operacion.
     static eliminar(req, res)
     {
         const eliminado = UsuarioModelo.eliminar(req.params.id);

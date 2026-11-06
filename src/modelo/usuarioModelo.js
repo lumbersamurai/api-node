@@ -8,10 +8,12 @@ class UsuarioModelo {
         return usuarios;
     }
 
+    // Normaliza el id recibido por ruta antes de buscar el usuario.
     static obtenerUsuarioPorId(id) {
         return usuarios.find(u => u.id === parseInt(id));
     }
 
+    // Crea y guarda un usuario con un id basado en el tamano actual del arreglo.
     static crear(datos) {
         const nuevoUsuario = {
             id: usuarios.length + 1,
@@ -22,6 +24,7 @@ class UsuarioModelo {
         return nuevoUsuario;
     }
 
+    // Actualiza solo los campos presentes y conserva los valores existentes.
     static actualizar(id, datos) {
         const usuario = this.obtenerUsuarioPorId(id); // Reutilizamos el metodo para obtener el usuario por id
         if (!usuario) return null;
@@ -32,6 +35,7 @@ class UsuarioModelo {
         return usuario;
     }
 
+    // Elimina por indice para modificar el arreglo original.
     static eliminar(id) 
     {
         const indice = usuarios.findIndex(u => u.id === parseInt(id));
